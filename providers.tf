@@ -15,13 +15,13 @@ terraform {
         apikey = var.intersight_account.api_key
         secretkey = var.intersight_account.api_secret
     }
-    provider "aci" {
-        # APIC Username
-        username = var.aci_user.username
-        # APIC Password
-        password = var.aci_user.password
-        # APIC URL
-        url      = var.aci_user.url
-        insecure = true
-    }
+    # provider "aci" {
+    #     # APIC Username
+    #     username = var.aci_user.username
+    #     # APIC Password
+    #     password = var.aci_user.password
+    #     # APIC URL
+    #     url      = var.aci_user.url
+    #     insecure = true
+    # }
 }
