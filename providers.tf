@@ -11,6 +11,7 @@ terraform {
 
         }
     }
+} 
     provider "intersight" {
         apikey = var.intersight_account.api_key
         secretkey = var.intersight_account.api_secret
@@ -24,4 +25,11 @@ terraform {
     #     url      = var.aci_user.url
     #     insecure = true
     # }
+
+data "intersight_organization_organization" "my_org" {
+  name = "Lab-Datacenter"
+}
+
+output "organization" {
+  value = data.intersight_organization_organization.my_org.results[0].moid
 }
