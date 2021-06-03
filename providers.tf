@@ -6,15 +6,17 @@ terraform {
         }
         aci = {
             source = "CiscoDevNet/aci"
+            version = "0.7.0"
         }
-        vcenter = {
-
+        vsphere = {
+            version = "2.0.0"
         }
     }
 } 
     provider "intersight" {
         apikey = var.intersight_account.api_key
         secretkey = var.intersight_account.api_secret
+        endpoint = var.intersight_account.url
     }
     provider "aci" {
         # APIC Username
@@ -26,19 +28,9 @@ terraform {
         insecure = true
     }
 
-data "intersight_organization_organization" "my_org" {
-  name = "Lab-Datacenter"
-}
-
-output "organization" {
-  value = data.intersight_organization_organization.my_org.results[0].moid
-}
-
-data "aci_system" "my_syst" {
-  pod_id = "1"
-  system_id = "1"
-}
-
-output "aci_system" {
-    value = data.aci_system.my_syst.results[0].version
-}
+    # provider "vsphere" {
+    #     user = var.vsphere_user.username
+    #     password = var.vsphere_user.password
+    #     vsphere_server = var.vsphere_user.url
+    #     allow_unverified_ssl = true
+    # }
