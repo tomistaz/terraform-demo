@@ -33,3 +33,12 @@ data "intersight_organization_organization" "my_org" {
 output "organization" {
   value = data.intersight_organization_organization.my_org.results[0].moid
 }
+
+data "aci_system" "my_syst" {
+  pod_id = "1"
+  system_id = "1"
+}
+
+output "aci_system" {
+    value = data.aci_system.my_syst.results[0].version
+}
